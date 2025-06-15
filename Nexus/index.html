@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="Nexus Focus - A minimalist focus timer to help you stay productive">
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Nexus|Focus</title> 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="focus-container" role="main">
+    <h1 class="app-title">Nexus</h1>
+    <h2 class="sub-title">Let's unlock a bit of focus</h2>
+    <div id="quote" class="quote" role="complementary" aria-live="polite"></div>
+    <div class="task-section">
+      <label for="taskInput" class="visually-hidden">What are you focusing on?</label>
+      <input 
+        type="text" 
+        id="taskInput" 
+        placeholder="What are you focusing on?" 
+        maxlength="60"
+        aria-label="Enter your focus task"
+        aria-required="true"
+        required
+      />
+    </div>
+    <div id="timer" class="timer" role="timer" aria-live="polite" aria-atomic="true">00:00</div>
+    <div class="session-controls" role="group" aria-labelledby="sessionControlsLabel">
+      <h3 id="sessionControlsLabel" class="visually-hidden">Session Length Controls</h3>
+      <div class="session-length-group">
+        <label for="sessionLength" class="session-label">Session Length:</label>
+        <select 
+          id="sessionLength" 
+          aria-label="Select focus session duration"
+          aria-describedby="sessionLengthDescription"
+        >
+          <option value="5">5 min</option>
+          <option value="15">15 min</option>
+          <option value="25" selected>25 min</option>
+          <option value="30">30 min</option>
+          <option value="50">50 min</option>
+        </select>
+        <span id="sessionLengthDescription" class="visually-hidden">Select a predefined session length or use custom time inputs below</span>
+      </div>
+      <div class="custom-time-inputs" role="group" aria-labelledby="customTimeLabel">
+        <h4 id="customTimeLabel" class="visually-hidden">Custom Time Inputs</h4>
+        <div class="time-input-group">
+          <label for="customMinutes" class="session-label">Minutes:</label>
+          <input 
+            type="number" 
+            id="customMinutes" 
+            min="0" 
+            max="180" 
+            placeholder="0" 
+            aria-label="Enter custom minutes"
+            aria-describedby="minutesDescription"
+          />
+          <span id="minutesDescription" class="visually-hidden">Enter minutes (0-180)</span>
+        </div>
+        <div class="time-input-group">
+          <label for="customSeconds" class="session-label">Seconds:</label>
+          <input 
+            type="number" 
+            id="customSeconds" 
+            min="0" 
+            max="59" 
+            placeholder="0" 
+            aria-label="Enter custom seconds"
+            aria-describedby="secondsDescription"
+          />
+          <span id="secondsDescription" class="visually-hidden">Enter seconds (0-59)</span>
+        </div>
+      </div>
+    </div>
+    <button 
+      id="startBtn" 
+      aria-label="Start focus session"
+      aria-describedby="startButtonDescription"
+    >
+      Start Focus
+    </button>
+    <span id="startButtonDescription" class="visually-hidden">Click to start your focus session. Press Enter in the task input to start with keyboard.</span>
+  </main>
+  <script src="script.js" defer></script>
+</body>
+</html>
